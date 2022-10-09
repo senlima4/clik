@@ -1,0 +1,41 @@
+{
+  "extends": "nx/presets/npm.json",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "dev",
+          "build",
+          "build:tsc",
+          "test",
+          "deploy:prod",
+          "deploy:dev",
+          "lint",
+          "clean",
+          "db-deploy",
+          "db-migrate",
+          "db-nuke",
+          "db-reset",
+          "db-seed",
+          "db-setup",
+          "db-studio",
+          "dx",
+          "generate-schemas",
+          "post-install"
+        ],
+        "accessToken": "ODA3ZTIyNTAtZTlhNC00Y2JhLWEzZDctMDNiZjM4OGNkZDYwfHJlYWQtd3JpdGU="
+      }
+    }
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ]
+    }
+  },
+  "affected": {
+    "defaultBase": "main"
+  }
+}

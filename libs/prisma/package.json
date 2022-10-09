@@ -1,0 +1,33 @@
+{
+  "name": "@ference/prisma",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'no build needed'",
+    "clean": "rm -rf .turbo && rm -rf node_modules",
+    "db-deploy": "pnpm prisma migrate deploy",
+    "db-migrate": "pnpm prisma migrate dev",
+    "db-nuke": "docker-compose down --volumes --remove-orphans",
+    "db-reset": "run-s db-nuke db-setup",
+    "db-seed": "pnpm prisma db seed",
+    "db-setup": "run-s db-deploy db-seed",
+    "db-studio": "pnpm prisma studio",
+    "dx": "pnpm db-setup",
+    "generate-schemas": "pnpm prisma generate",
+    "post-install": "pnpm generate-schemas"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.41",
+    "npm-run-all": "^4.1.5",
+    "prisma": "^4.2.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.2.1"
+  },
+  "main": "index.ts",
+  "prisma": {
+    "seed": "ts-node --transpile-only ./seed.ts"
+  }
+}
